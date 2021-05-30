@@ -57,7 +57,7 @@ while sleep $INTERVAL; do
   #echo "UP:   $up"
   # uptime
   echo "PUTVAL \"$HOST/exec-dsluptime/gauge\" interval=$INTERVAL N:$upt"
-  echo "PUTVAL \"$HOST/exec-dsluptime/counter\" interval=$INTERVAL N:$upt"
+  #echo "PUTVAL \"$HOST/exec-dsluptime/counter\" interval=$INTERVAL N:$upt"
 
   # up und downstream datarate
   echo "PUTVAL \"$HOST/exec-dsldr/gauge-updr\" interval=$INTERVAL N:$up_dr"
