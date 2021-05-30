@@ -26,7 +26,7 @@ return L.Class.extend({
 		number_format: "%8.0lf",
 		autoscale_max: true,
 		data: {
-		    types: [ "gauge", "counter" ]
+		    types: [ "gauge" ]
 		}
 	    };
 	}
