@@ -39,10 +39,10 @@ This script must be save in the folder `/www/luci-static/resources/statistics/rr
 **ATTENTION**: If there is already a script `exec.js` you should not override it, but add the code.   
 
 A look at my first data:
-![dsl-statistics](./assets/dslstatistics.png)
+![dsl-statistics](./assets/dslstatistics.png)   
+and the data after first reconnect with errors.   
+![dsl-statistics-1day](./assets/dslstatistics_1day.png)   
 
 There is even much more data in the json file.   
 I tried, to find out, which are important for analysing errors.   
 If i forgot essentials, let me know.
-
-
