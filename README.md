@@ -41,7 +41,7 @@ As the systems does not know how to present data of user defined scripts, the ja
 This script must be saved in the folder `/www/luci-static/resources/statistics/rrdtool/definitions/`.   
 **ATTENTION**: If there is already a script `exec.js` you should not override it, but add the code.   
 
-A look at my first data:
+A look at my first data:   
 ![dsl-statistics](./assets/dslstatistics.png)   
 and the data after first reconnect with errors.   
 ![dsl-statistics-1day](./assets/dslstatistics_1day.png)   
