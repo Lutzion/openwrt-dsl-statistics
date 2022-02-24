@@ -18,22 +18,20 @@ does not exist anymore.
 Furthermore the statistics output of 
 `dsl_control dslstat` has an json output different to the outputs before.   
 
-Additionally the `collect-mod-exec` module, which allows to call user defined scripts, does not allow root access, which is neccessary to call `dsl_control dslstat`.   
+Additionally the `collect-mod-exec` module, which allows to call user defined scripts, does not allow root access, which is neccessary to call `dsl_control dslstat` or `ubus call dsl metrics`.
 
 ## The solution ##
-### Cronjob to get json data ###
-The entry    
-`* * * * * /etc/init.d/dsl_control dslstat > /tmp/dslstat.txt`   
-in **Scheduled Tasks** writes the json output to ram (actually file `/tmp/dslstat.txt`). Also it might be needed to restart the cron service.   
+### Whitelisting the ubus call ###
+Copy the file `dsl.json` to `/usr/share/acl.d/dsl.json`.
+This allows the `dsl_stats.sh` script to read the dsl metrics as user nobody.
+I don't know how to apply this change without rebooting, so just do that.
    
 ### Filling the rrd database ### 
-The script `dsl_stats.sh`, that is called by the module `collect-mod-exec`, decodes the json format of the data using the library `/usr/share/libubox/jshn.sh`.   
+The script `dsl_stats.sh`, which is called by the module `collect-mod-exec`, decodes the json format of the data using the library `/usr/share/libubox/jshn.sh`.
    
 You can save the script wherever you want, but better not in folders that do not survive a reboot.
 I mounted a usb-stick to also keep my statistics data there. That is also my place for the script. 
-Also do not forget to give it execution permissions and make it accessable by nobody:nogroup
-`chmod 777 dsl_stats.sh`
-`chmod +x dsl_stats.sh`   
+Also do not forget to make it executable by user nobody: `chmod +x dsl_stats.sh`.
   
    
 ### Creating the graphs ###

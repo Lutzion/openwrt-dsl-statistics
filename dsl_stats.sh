@@ -16,9 +16,7 @@ INTERVAL=$COLLECTD_INTERVAL
 INTERVAL=$(awk -v i=$INTERVAL 'BEGIN{print int(i)}')
 
 while sleep $INTERVAL; do
-  ## Status aus Datei laden, direkte Befehlsausfuehrung wg. erforderlichem root nicht moeglich
-  #json_load "$(/etc/init.d/dsl_control dslstat)"
-  json_load_file /tmp/dslstat.txt
+  json_load "$(ubus call dsl metrics)"
   
   ## Uptime
   json_get_var upt uptime
